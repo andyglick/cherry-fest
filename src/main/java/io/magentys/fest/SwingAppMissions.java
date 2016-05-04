@@ -28,9 +28,6 @@ public class SwingAppMissions {
         return new VerifyDriverState();
     }
 
-    public static GetMatcher getMatcher(final SwingScreenElement swingScreenElement) {
-        return new GetMatcher(swingScreenElement);
-    }
 
     public static ClickOnButton clickOnButton(final SwingScreenElement swingScreenElement){
         return new ClickOnButton(swingScreenElement);

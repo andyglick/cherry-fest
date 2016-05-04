@@ -2,11 +2,12 @@ package io.magentys.fest.missions;
 
 import io.magentys.Agent;
 import io.magentys.Mission;
+import io.magentys.fest.MemoryKeys;
 import io.magentys.fest.screens.SwingScreenElement;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JButtonFixture;
 
-import static io.magentys.fest.SwingAppMissions.getMatcher;
+import static io.magentys.fest.missions.ConcreteTypeMatcher.matcherFor;
 
 
 public class ClickOnButton implements Mission<Agent> {
@@ -23,11 +24,11 @@ public class ClickOnButton implements Mission<Agent> {
     }
 
     public Agent accomplishAs(Agent agent) {
-        FrameFixture window = agent.recalls("main.window", FrameFixture.class);
+        FrameFixture window = agent.recalls(MemoryKeys.Screens.MAIN_WINDOW, FrameFixture.class);
         if(label != null){
             window.button(label).click();
         } else {
-            JButtonFixture button = window.button(getMatcher(element).accomplishAs(agent));
+            JButtonFixture button = window.button(matcherFor(element));
             button.click();
         }
         return agent;

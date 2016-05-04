@@ -6,10 +6,10 @@ import io.magentys.screens.annotations.ScreenElement;
 import java.awt.*;
 import java.util.Set;
 
-public class SwingScreenElement implements ScreenElement {
+public class SwingScreenElement<T extends Component> implements ScreenElement {
 
     private String alias;
-    private Class<? extends Component> clazz;
+    private Class<T> clazz;
     private String memoryKey;
     private String name;
     private String defaultValue;
@@ -40,7 +40,7 @@ public class SwingScreenElement implements ScreenElement {
         return this;
     }
 
-    public SwingScreenElement withComponentClass(Class<? extends Component> clazz) {
+    public SwingScreenElement withComponentClass(Class<T> clazz) {
         this.clazz = clazz;
         return this;
     }
@@ -50,7 +50,7 @@ public class SwingScreenElement implements ScreenElement {
         return this;
     }
 
-    public Class<? extends Component> getComponentClass() {
+    public Class<T> getComponentClass() {
         return clazz;
     }
 
