@@ -1,0 +1,68 @@
+package io.magentys.fest.screens;
+
+import com.mns.pos.beanstore.fest.locators.AttributeValuePair;
+import io.magentys.screens.annotations.ScreenElement;
+
+import java.awt.*;
+import java.util.Set;
+
+public class SwingScreenElement implements ScreenElement {
+
+    private String alias;
+    private Class<? extends Component> clazz;
+    private String memoryKey;
+    private String name;
+    private String defaultValue;
+    private Set<AttributeValuePair> attributePairs;
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public SwingScreenElement withAlias(String alias) {
+        this.alias = alias;
+        return this;
+    }
+
+    @Override
+    public ScreenElement withDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+        return this;
+    }
+
+    public SwingScreenElement withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public SwingScreenElement withMemoryKey(String memoryKey) {
+        this.memoryKey = memoryKey;
+        return this;
+    }
+
+    public SwingScreenElement withComponentClass(Class<? extends Component> clazz) {
+        this.clazz = clazz;
+        return this;
+    }
+
+    public SwingScreenElement withAttributes(final Set<AttributeValuePair> attributePairs){
+        this.attributePairs = attributePairs;
+        return this;
+    }
+
+    public Class<? extends Component> getComponentClass() {
+        return clazz;
+    }
+
+    public String getMemoryKey(){
+        return memoryKey;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<AttributeValuePair> getAttributes() {
+        return attributePairs;
+    }
+}
