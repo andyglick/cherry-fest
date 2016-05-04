@@ -1,9 +1,8 @@
 package io.magentys.fest.missions;
 
-import com.mns.pos.beanstore.MemoryKeys;
-import com.mns.pos.beanstore.fest.screens.SwingScreenElement;
 import io.magentys.Agent;
 import io.magentys.Mission;
+import io.magentys.fest.screens.SwingScreenElement;
 import org.fest.swing.core.ComponentFoundCondition;
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.fixture.FrameFixture;
@@ -50,7 +49,7 @@ public class FindElement extends AbstractFinderMission implements Mission<Compon
             };
         }
 
-        Pause.pause(new ComponentFoundCondition(waitMessage(swingScreenElement),  agent.recalls(MemoryKeys.Screens.MAIN_WINDOW, FrameFixture.class).robot.finder(), matcher), 60000);
+        Pause.pause(new ComponentFoundCondition(waitMessage(swingScreenElement),  agent.recalls("main.window", FrameFixture.class).robot.finder(), matcher), 60000);
 
         return result[0];
     }

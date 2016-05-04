@@ -1,8 +1,8 @@
 package io.magentys.fest.missions;
 
-import com.mns.pos.beanstore.fest.locators.AttributeValuePair;
-import com.mns.pos.beanstore.fest.screens.SwingScreenElement;
 import io.magentys.exceptions.ScreenException;
+import io.magentys.fest.locators.AttributeValuePair;
+import io.magentys.fest.screens.SwingScreenElement;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;

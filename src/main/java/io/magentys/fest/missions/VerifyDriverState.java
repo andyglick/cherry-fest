@@ -1,8 +1,8 @@
 package io.magentys.fest.missions;
 
-import com.mns.pos.beanstore.fest.SwingAppDriver;
 import io.magentys.Agent;
 import io.magentys.Mission;
+import io.magentys.fest.SwingAppDriver;
 
 public class VerifyDriverState implements Mission<Boolean> {
     @Override

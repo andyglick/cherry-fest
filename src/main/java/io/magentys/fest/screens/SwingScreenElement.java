@@ -1,6 +1,6 @@
 package io.magentys.fest.screens;
 
-import com.mns.pos.beanstore.fest.locators.AttributeValuePair;
+import io.magentys.fest.locators.AttributeValuePair;
 import io.magentys.screens.annotations.ScreenElement;
 
 import java.awt.*;

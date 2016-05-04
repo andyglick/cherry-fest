@@ -1,13 +1,13 @@
 package io.magentys.fest.missions;
 
-import com.mns.pos.beanstore.MemoryKeys;
-import com.mns.pos.beanstore.fest.screens.SwingScreenElement;
 import io.magentys.Agent;
 import io.magentys.Mission;
+import io.magentys.fest.screens.SwingScreenElement;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JButtonFixture;
 
-import static com.mns.pos.beanstore.fest.SwingAppMissions.getMatcher;
+import static io.magentys.fest.SwingAppMissions.getMatcher;
+
 
 public class ClickOnButton implements Mission<Agent> {
 
@@ -23,7 +23,7 @@ public class ClickOnButton implements Mission<Agent> {
     }
 
     public Agent accomplishAs(Agent agent) {
-        FrameFixture window = agent.recalls(MemoryKeys.Screens.MAIN_WINDOW, FrameFixture.class);
+        FrameFixture window = agent.recalls("main.window", FrameFixture.class);
         if(label != null){
             window.button(label).click();
         } else {

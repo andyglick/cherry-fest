@@ -1,8 +1,8 @@
 package io.magentys.fest.missions;
 
-import com.mns.pos.beanstore.fest.screens.SwingScreenElement;
 import io.magentys.Agent;
 import io.magentys.Mission;
+import io.magentys.fest.screens.SwingScreenElement;
 import org.fest.swing.core.ComponentFoundCondition;
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.fixture.FrameFixture;

@@ -1,7 +1,8 @@
 package io.magentys.fest;
 
-import com.mns.pos.beanstore.fest.missions.*;
-import com.mns.pos.beanstore.fest.screens.SwingScreenElement;
+
+import io.magentys.fest.missions.*;
+import io.magentys.fest.screens.SwingScreenElement;
 
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ public class SwingAppMissions {
        return new FindFrame(clazz, rememberAsKey);
     }
 
-    public static FindElement findElement(final SwingScreenElement  swingScreenElement) {
+    public static FindElement findElement(final SwingScreenElement swingScreenElement) {
         return new FindElement(swingScreenElement);
     }
 

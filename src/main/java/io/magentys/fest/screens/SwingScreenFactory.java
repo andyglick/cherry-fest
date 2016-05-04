@@ -1,7 +1,7 @@
 package io.magentys.fest.screens;
 
-import com.mns.pos.beanstore.fest.locators.AttributeValuePair;
-import com.mns.pos.beanstore.fest.locators.FindBy;
+import io.magentys.fest.locators.AttributeValuePair;
+import io.magentys.fest.locators.FindBy;
 import io.magentys.screens.Screen;
 import io.magentys.screens.ScreenFactory;
 import io.magentys.screens.annotations.Alias;

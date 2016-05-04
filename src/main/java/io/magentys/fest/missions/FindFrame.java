@@ -1,8 +1,8 @@
 package io.magentys.fest.missions;
 
-import com.mns.pos.beanstore.fest.SwingAppDriver;
 import io.magentys.Agent;
 import io.magentys.Mission;
+import io.magentys.fest.SwingAppDriver;
 import org.fest.swing.core.ComponentFoundCondition;
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.finder.WindowFinder;
