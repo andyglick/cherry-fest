@@ -5,9 +5,6 @@ import io.magentys.fest.screens.SwingScreen;
 import io.magentys.fest.screens.SwingScreenElement;
 import io.magentys.fest.screens.SwingScreenFactory;
 import io.magentys.screens.annotations.Alias;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import javax.swing.*;
 

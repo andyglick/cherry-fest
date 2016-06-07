@@ -4,8 +4,9 @@ import io.magentys.Agent;
 import io.magentys.Mission;
 import io.magentys.fest.MemoryKeys;
 import io.magentys.fest.screens.SwingScreenElement;
-import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.fixture.JButtonFixture;
+import org.assertj.swing.fixture.FrameFixture;
+import org.assertj.swing.fixture.JButtonFixture;
+
 
 import static io.magentys.fest.missions.ConcreteTypeMatcher.matcherFor;
 

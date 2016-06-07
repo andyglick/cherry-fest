@@ -4,7 +4,8 @@ import io.magentys.Agent;
 import io.magentys.Mission;
 import io.magentys.fest.MemoryKeys;
 import io.magentys.fest.screens.SwingScreenElement;
-import org.fest.swing.fixture.FrameFixture;
+import org.assertj.swing.fixture.FrameFixture;
+
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static io.magentys.fest.missions.ConcreteTypeMatcher.matcherFor;
