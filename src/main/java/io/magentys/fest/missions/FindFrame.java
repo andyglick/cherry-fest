@@ -3,11 +3,12 @@ package io.magentys.fest.missions;
 import io.magentys.Agent;
 import io.magentys.Mission;
 import io.magentys.fest.SwingAppDriver;
-import org.fest.swing.core.ComponentFoundCondition;
-import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.finder.WindowFinder;
-import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.timing.Pause;
+import org.assertj.swing.core.ComponentFoundCondition;
+import org.assertj.swing.core.GenericTypeMatcher;
+import org.assertj.swing.finder.WindowFinder;
+import org.assertj.swing.fixture.FrameFixture;
+import org.assertj.swing.timing.Pause;
+
 
 import javax.swing.*;
 
@@ -34,7 +35,7 @@ public class FindFrame implements Mission<GenericTypeMatcher<JFrame>> {
 
     public GenericTypeMatcher<JFrame> accomplishAs(Agent agent) {
         SwingAppDriver swingAppDriver = agent.usingThe(SwingAppDriver.class);
-        Pause.pause(new ComponentFoundCondition("Waiting for Frame to load", swingAppDriver.robot().finder(),  new GenericTypeMatcher<JFrame>(JFrame.class) {
+        Pause.pause(new ComponentFoundCondition("Waiting for Frame to load", swingAppDriver.robot().finder(), new GenericTypeMatcher<JFrame>(JFrame.class) {
             @Override
             protected boolean isMatching(JFrame frame) {
                 return frame.getClass() == clazz;

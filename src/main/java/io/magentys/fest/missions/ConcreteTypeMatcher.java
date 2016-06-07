@@ -3,7 +3,8 @@ package io.magentys.fest.missions;
 import io.magentys.exceptions.ScreenException;
 import io.magentys.fest.locators.AttributeValuePair;
 import io.magentys.fest.screens.SwingScreenElement;
-import org.fest.swing.core.GenericTypeMatcher;
+import org.assertj.swing.core.GenericTypeMatcher;
+
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;

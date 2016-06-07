@@ -4,13 +4,11 @@ import io.magentys.Agent;
 import io.magentys.Mission;
 import io.magentys.fest.MemoryKeys;
 import io.magentys.fest.screens.SwingScreenElement;
-import org.fest.swing.core.ComponentFoundCondition;
-import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.timing.Pause;
+import org.assertj.swing.core.ComponentFoundCondition;
+import org.assertj.swing.core.Robot;
+import org.assertj.swing.fixture.FrameFixture;
+import org.assertj.swing.timing.Pause;
 
-import javax.swing.*;
-import java.awt.*;
 
 import static io.magentys.fest.missions.ConcreteTypeMatcher.matcherFor;
 
@@ -24,9 +22,10 @@ public class FindElement extends AbstractFinderMission implements Mission<Agent>
 
     @Override
     public Agent accomplishAs(Agent agent) {
+        final Robot robot = agent.recalls(MemoryKeys.Screens.ROBOT, Robot.class);
         Pause.pause(
                 new ComponentFoundCondition(waitMessage(swingScreenElement),
-                        agent.recalls(MemoryKeys.Screens.MAIN_WINDOW, FrameFixture.class).robot.finder(),
+                        robot.finder(),
                         matcherFor(swingScreenElement)),
                 60000);
         return agent;

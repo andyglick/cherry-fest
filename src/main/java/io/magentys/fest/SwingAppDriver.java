@@ -1,9 +1,11 @@
 package io.magentys.fest;
 
-import org.fest.swing.core.BasicRobot;
-import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiTask;
+
+import org.assertj.swing.core.BasicRobot;
+import org.assertj.swing.core.Robot;
+import org.assertj.swing.edt.GuiActionRunner;
+import org.assertj.swing.edt.GuiTask;
+
 
 public class SwingAppDriver {
 
