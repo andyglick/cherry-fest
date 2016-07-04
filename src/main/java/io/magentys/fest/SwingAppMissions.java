@@ -16,6 +16,10 @@ public class SwingAppMissions {
         return new FindElement(swingScreenElement);
     }
 
+    public static WaitForElement waitForElement(final SwingScreenElement swingScreenElement) {
+        return new WaitForElement(swingScreenElement);
+    }
+
     public static FindElementAndInvokeAction findElementAndInvoke(final SwingScreenElement swingScreenElement, String invokeAction, Object... arguments) {
         return new FindElementAndInvokeAction(swingScreenElement, invokeAction, arguments);
     }

@@ -1,10 +1,10 @@
 package io.magentys.fest.missions;
 
+import io.magentys.Agent;
 import io.magentys.exceptions.ScreenException;
 import io.magentys.fest.locators.AttributeValuePair;
 import io.magentys.fest.screens.SwingScreenElement;
 import org.assertj.swing.core.GenericTypeMatcher;
-
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +16,9 @@ import java.util.stream.Stream;
 
 public class ConcreteTypeMatcher<T extends Component> extends GenericTypeMatcher<T> {
     private final SwingScreenElement<T> swingScreenElement;
+    private Agent agent;
+    private Class resultClass;
+    private String keyToRemember;
     private Set<AttributeValuePair> attributes;
     Class<T> type;
     private String methodToInvoke;
@@ -36,6 +39,14 @@ public class ConcreteTypeMatcher<T extends Component> extends GenericTypeMatcher
         this.arguments = arguments;
     }
 
+    public <RESULT> ConcreteTypeMatcher(SwingScreenElement element, Agent agent, String methodToInvoke, String keyToRemember, Class<RESULT> resultClass, Object[] arguments) {
+        this(element);
+        this.methodToInvoke = methodToInvoke;
+        this.agent = agent;
+        this.keyToRemember = keyToRemember;
+        this.resultClass = resultClass;
+    }
+
 
     public static ConcreteTypeMatcher matcherFor(final SwingScreenElement swingScreenElement){
         return new ConcreteTypeMatcher<>(swingScreenElement);
@@ -45,6 +56,10 @@ public class ConcreteTypeMatcher<T extends Component> extends GenericTypeMatcher
         return new ConcreteTypeMatcher<>(swingScreenElement, methodToInvoke, arguments);
     }
 
+    public static <RESULT> ConcreteTypeMatcher matcherFor(final SwingScreenElement element, Agent agent, String methodToInvoke, String keyToRemember, Class<RESULT> resultClass, Object... arguments ){
+        return new ConcreteTypeMatcher(element, agent, methodToInvoke, keyToRemember, resultClass, arguments);
+    }
+
     @Override
     protected boolean isMatching(T component) {
         boolean result = type.isInstance(component);
@@ -52,10 +67,33 @@ public class ConcreteTypeMatcher<T extends Component> extends GenericTypeMatcher
         if(attributes != null && attributes.size() != 0 ) {
             result = testAllAttributesOf(component);
         }
-        if(methodToInvoke != null){
+        if(methodToInvoke != null && keyToRemember == null){
             invokeRequiredMethodOn(component);
         }
+        if(methodToInvoke != null && keyToRemember != null && resultClass != null) {
+            invokeMethodAndGetMethodResult(component, agent, keyToRemember, resultClass);
+        }
         return result;
+    }
+
+    private void invokeMethodAndGetMethodResult(T component, Agent agent, String keyToRemember, Class resultClass) {
+        Method[] allMethods = component.getClass().getMethods();
+        Optional<Method> methodOptional = Stream.of(allMethods).filter(method -> method.getName().equalsIgnoreCase(methodToInvoke)).findFirst();
+        if(methodOptional.isPresent()) {
+            try {
+                if(arguments != null && arguments.length > 0)  methodOptional.get().invoke(component, arguments);
+                else {
+                    Object result = methodOptional.get().invoke(component);
+                    if(result != null){
+                        agent.keepsInMind(keyToRemember, resultClass.cast(result));
+                    }
+                }
+            } catch (IllegalAccessException|InvocationTargetException e) {
+                throw new ScreenException("Error upon invoking " + methodToInvoke + " on " + swingScreenElement.getAlias());
+            }
+        } else {
+            throw new ScreenException("No method " + methodToInvoke + " found on " + swingScreenElement.getAlias());
+        }
     }
 
     protected void invokeRequiredMethodOn(T component){
@@ -130,20 +168,5 @@ public class ConcreteTypeMatcher<T extends Component> extends GenericTypeMatcher
         return result.isPresent() && result.get();
     }
 
-    /*
 
-
-
-
-
-
-
-
-    protected String waitMessage(final SwingScreenElement swingScreenElement){
-        if(swingScreenElement.getAlias() != null){
-            return "Waiting for " + swingScreenElement.getAlias();
-        }
-        return "Waiting for element";
-    }
-     */
 }
