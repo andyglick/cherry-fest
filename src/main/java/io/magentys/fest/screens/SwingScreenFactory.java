@@ -1,5 +1,6 @@
 package io.magentys.fest.screens;
 
+import io.magentys.fest.i18n.Translator;
 import io.magentys.fest.locators.AttributeValuePair;
 import io.magentys.fest.locators.FindBy;
 import io.magentys.screens.Screen;
@@ -15,6 +16,15 @@ import java.util.stream.Stream;
 
 public class SwingScreenFactory extends ScreenFactory {
 
+    Translator translator;
+
+    public SwingScreenFactory(){}
+
+    public SwingScreenFactory(final Translator translator){
+        this.translator = translator;
+    }
+
+
     @Override
     protected <T extends Screen> void instantiateAndRemember(T screen, Field field) throws IllegalAccessException {
         String aliasValue = field.isAnnotationPresent(Alias.class) ? field.getAnnotation(Alias.class).value() : null;
@@ -29,7 +39,19 @@ public class SwingScreenFactory extends ScreenFactory {
             clazz = field.isAnnotationPresent(FindBy.class) ? field.getAnnotation(FindBy.class).clazz() : null;
             if(!"".equals(findBy.attributes())){
                 String[] stringPairs = findBy.attributes().split(",");
-                pairs = Stream.of(stringPairs).map(stringPair -> AttributeValuePair.from(stringPair.split("="))).collect(Collectors.toSet());
+                pairs = Stream.of(stringPairs)
+                        .map(stringPair -> AttributeValuePair.from(stringPair.split("=")))
+                        .map(avp -> {
+                            if(isTextAttribute(avp)) {
+                                String translation = translator.translate(avp.getValue());
+                                if(translation == null || "".equals(translation)) translation = avp.getValue();
+                                return AttributeValuePair.from(avp.getAttribute(), translation);
+                            }
+                            else {
+                                return avp;
+                            }
+                        })
+                        .collect(Collectors.toSet());
             }
 
 
@@ -46,6 +68,9 @@ public class SwingScreenFactory extends ScreenFactory {
 
     }
 
+    private boolean isTextAttribute(AttributeValuePair avp) {
+        return avp.getAttribute().startsWith("text") && translator != null;
+    }
 
 
 }
