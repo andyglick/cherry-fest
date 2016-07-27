@@ -12,6 +12,8 @@ import org.junit.Test;
 
 import javax.swing.*;
 
+import java.util.Locale;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -24,6 +26,7 @@ public class SwingScreenFactoryTest {
     @Before
     public void setup(){
         when(translator.translate("Operator ID")).thenReturn("Operater");
+
     }
 
     @Test
