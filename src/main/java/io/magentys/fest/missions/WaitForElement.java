@@ -13,9 +13,15 @@ import static io.magentys.fest.missions.ConcreteTypeMatcher.matcherFor;
 public class WaitForElement extends AbstractFinderMission implements Mission<Agent> {
 
     protected final SwingScreenElement swingScreenElement;
+    protected Integer timeout = 60000;
 
     public WaitForElement(SwingScreenElement swingScreenElement) {
         this.swingScreenElement = swingScreenElement;
+    }
+
+    public WaitForElement(SwingScreenElement swingScreenElement, Integer timeout) {
+        this.swingScreenElement = swingScreenElement;
+        this.timeout = timeout;
     }
 
     @Override
@@ -25,13 +31,9 @@ public class WaitForElement extends AbstractFinderMission implements Mission<Age
                 new ComponentFoundCondition(waitMessage(swingScreenElement),
                         robot.finder(),
                         matcherFor(swingScreenElement)),
-                60000);
+                this.timeout);
         return agent;
     }
-
-
-
-
 
 
 }

@@ -9,7 +9,7 @@ import javax.swing.*;
 public class SwingAppMissions {
 
     public static FindFrame getFrame(Class<? extends JFrame> clazz, String rememberAsKey) {
-       return new FindFrame(clazz, rememberAsKey);
+        return new FindFrame(clazz, rememberAsKey);
     }
 
     public static FindElement findElement(final SwingScreenElement swingScreenElement) {
@@ -18,6 +18,10 @@ public class SwingAppMissions {
 
     public static WaitForElement waitForElement(final SwingScreenElement swingScreenElement) {
         return new WaitForElement(swingScreenElement);
+    }
+
+    public static WaitForElement waitForElement(final SwingScreenElement swingScreenElement, Integer timeout) {
+        return new WaitForElement(swingScreenElement, timeout);
     }
 
     public static FindElementAndInvokeAction findElementAndInvoke(final SwingScreenElement swingScreenElement, String invokeAction, Object... arguments) {
