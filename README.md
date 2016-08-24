@@ -10,6 +10,6 @@ Have a look at our full documentation found at:
 [http://cherryframe.work](http://cherryframe.work).
             
             
-* Developers: [Kostas Mamalis](@mamalisk)
+* Developers: [Kostas Mamalis](@mamalisk), [Lewis Magri](@LewisMagri)
 
 Powered by [MagenTys](http://magentys.io)
