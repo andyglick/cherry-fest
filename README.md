@@ -12,4 +12,4 @@ Have a look at our full documentation found at:
             
 * Developers: [Kostas Mamalis](@mamalisk)
 
-Powered by [Magentys](http://magentys.io)
+Powered by [MagenTys](http://magentys.io)
