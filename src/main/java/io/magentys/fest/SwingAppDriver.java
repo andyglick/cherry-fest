@@ -42,4 +42,12 @@ public class SwingAppDriver {
     public void setDefaultWaitingTimeout(Long defaultWaitingTimeout) {
         this.defaultWaitingTimeout = defaultWaitingTimeout;
     }
+
+    public static void dontStartOnEDT() {
+        GuiActionRunner.executeInEDT(false);
+    }
+
+    public static void startOnEDT() {
+        GuiActionRunner.executeInEDT(true);
+    }
 }
