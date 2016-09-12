@@ -24,6 +24,10 @@ public class SwingAppMissions {
         return new WaitForElement(swingScreenElement, timeout);
     }
 
+    public static WaitFor waitFor(final Long timeout) {
+        return new WaitFor(timeout);
+    }
+
     public static IsAvailable isAvailable(final SwingScreenElement swingScreenElement) {
         return new IsAvailable(swingScreenElement);
     }
