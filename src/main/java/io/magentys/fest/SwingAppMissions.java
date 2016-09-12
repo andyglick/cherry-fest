@@ -28,6 +28,10 @@ public class SwingAppMissions {
         return new IsAvailable(swingScreenElement);
     }
 
+    public static IsAvailable isAvailable(final SwingScreenElement swingScreenElement, Integer timeout) {
+        return new IsAvailable(swingScreenElement, timeout);
+    }
+
     public static FindElementAndInvokeAction findElementAndInvoke(final SwingScreenElement swingScreenElement, String invokeAction, Object... arguments) {
         return new FindElementAndInvokeAction(swingScreenElement, invokeAction, arguments);
     }
