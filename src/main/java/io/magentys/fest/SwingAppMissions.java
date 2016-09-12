@@ -24,6 +24,10 @@ public class SwingAppMissions {
         return new WaitForElement(swingScreenElement, timeout);
     }
 
+    public static WaitFor waitFor(final Long timeout) {
+        return new WaitFor(timeout);
+    }
+
     public static FindElementAndInvokeAction findElementAndInvoke(final SwingScreenElement swingScreenElement, String invokeAction, Object... arguments) {
         return new FindElementAndInvokeAction(swingScreenElement, invokeAction, arguments);
     }
